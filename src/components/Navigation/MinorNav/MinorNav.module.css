@@ -1,0 +1,24 @@
+.MinorNavbar {
+  display: flex;
+  height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  color: #5f6368;
+  border-bottom: 1px solid #5f6368;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+li {
+  font-size: 12px;
+  margin: 10px 10px;
+}
+
+a {
+  color: #5f6368;
+  text-decoration: none;
+}
