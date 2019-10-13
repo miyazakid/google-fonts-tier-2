@@ -1,13 +1,14 @@
 import React from 'react';
 
 import classes from './MajorNav.module.css';
+import Input from '../../UI/Input/Input';
 
 const MajorNav = (props) => (
   <div className={classes.MajorNav}>
 
-    <input type="text" placeholder="Search..." />
+    <Input inputtype="text" placeholder="Search..." />
 
-    <input type="text" placeholder="Testing fonts here..." />
+    <Input inputtype="text" placeholder="Testing fonts here..." />
 
     <select>
      <option value="12px">12px</option>
@@ -16,9 +17,9 @@ const MajorNav = (props) => (
      <option value="32px">32px</option>
     </select>
 
-    <div>
-      <input type="radio" name="colormode" value="dark" />
-      <input type="radio" name="colormode" value="light" />
+    <div className={classes.RadioGroup}>
+      <Input inputtype="radio" id="dark" label="" name="colormode" value="dark" />
+      <Input inputtype="radio" id="light" label="" name="colormode" value="light" />
     </div>
 
     <button>Grid/List mode</button>

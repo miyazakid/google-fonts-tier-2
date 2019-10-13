@@ -1,10 +1,16 @@
 .MajorNav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   width: 90%;
   margin: 15px auto;
-  padding: 5px;
+  padding: 1px 15px;
   color: #5f6368;
   border: 1px solid #5f6368;
   border-radius: 30px;
+}
+
+.RadioGroup {
+  display: flex;
+  justify-content: space-between;
 }

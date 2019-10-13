@@ -1,0 +1,12 @@
+.FontCard {
+  border-top: 1px solid #5f6368;
+  margin: 15px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
