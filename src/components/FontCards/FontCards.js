@@ -9,12 +9,13 @@ class FontCards extends Component {
   render() {
 
     return (
-        <Aux>
+        <div className={classes.FontCards}>
           <FontCard />
           <FontCard />
           <FontCard />
           <FontCard />
-        </Aux>
+          <FontCard />
+        </div>
     );
   }
 }
