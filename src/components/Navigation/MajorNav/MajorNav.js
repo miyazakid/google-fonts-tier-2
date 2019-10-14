@@ -1,41 +1,47 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import classes from './MajorNav.module.css';
 import Input from '../../UI/Input/Input';
 import Aux from '../../../hoc/Aux/Aux';
 
-const MajorNav = (props) => (
-  <Aux>
-    <div className={classes.MajorNav}>
+class MajorNav extends PureComponent {
 
-      <Input inputtype="text" placeholder="Search..." />
+  render () {
 
-      <Input inputtype="text" placeholder="Testing fonts here..." />
+    return (
+      <Aux>
+        <div className={classes.MajorNav}>
 
-      <select>
-       <option value="12px">12px</option>
-       <option value="18px">18px</option>
-       <option value="24px">24px</option>
-       <option value="32px">32px</option>
-      </select>
+          <Input inputtype="text" placeholder="Search..." />
 
-      <div className={classes.RadioGroup}>
-        <Input inputtype="radio" id="dark" label="" name="colormode" value="dark" />
-        <Input inputtype="radio" id="light" label="" name="colormode" value="light" />
-      </div>
+          <Input inputtype="text" placeholder="Testing fonts here..." />
 
-      <button>Grid/List mode</button>
+          <select>
+           <option value="12px">12px</option>
+           <option value="18px">18px</option>
+           <option value="24px">24px</option>
+           <option value="32px">32px</option>
+          </select>
 
-      <button>Reset</button>
-    </div>
+          <div className={classes.RadioGroup}>
+            <Input inputtype="radio" id="dark" label="" name="colormode" value="dark" />
+            <Input inputtype="radio" id="light" label="" name="colormode" value="light" />
+          </div>
 
-    <div className={classes.MajorNavSmall}>
+          <button>Grid/List mode</button>
 
-      <Input inputtype="text" placeholder="Search..." />
+          <button>Reset</button>
+        </div>
 
-      <button>Reset</button>
-    </div>
-  </Aux>
-);
+        <div className={classes.MajorNavSmall}>
+
+          <Input inputtype="text" placeholder="Search..." />
+
+          <button>Reset</button>
+        </div>
+      </Aux>
+    );
+  }
+}
 
 export default MajorNav;
