@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import classes from './FontCards.module.css';
-import Aux from '../../hoc/Aux/Aux';
 import FontCard from './FontCard/FontCard';
 
-class FontCards extends Component {
+class FontCards extends PureComponent {
 
-  render() {
-
-    return (
-        <div className={classes.FontCards}>
-          <FontCard />
-          <FontCard />
-          <FontCard />
-          <FontCard />
-          <FontCard />
-        </div>
-    );
+    render () {
+      let cardCollection = [];
+      this.props.fonts.map((font, index) => {
+        return cardCollection.push(
+            <FontCard key={font.id} font={font.family} text={this.props.text}/>)
+      });
+      return (
+          <div className={classes.FontCards}>
+          {cardCollection}
+          </div>
+      );
   }
 }
 

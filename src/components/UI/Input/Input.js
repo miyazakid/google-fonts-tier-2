@@ -13,7 +13,7 @@ const input = (props) => {
       inputElement = (
         <div className={classes.Radio}>
           <input type="radio" className={classes.InputElement} {...props} />
-          <label for={props.id}><span>{props.label}</span></label>
+          <label htmlFor={props.id}><span>{props.label}</span></label>
         </div>
       );
       break;

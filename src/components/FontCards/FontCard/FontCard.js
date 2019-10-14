@@ -5,12 +5,12 @@ import classes from './FontCard.module.css';
 const fontcard = (props) => {
 
   return (
-    <div className={classes.FontCard}>
+    <div id={props.id} className={classes.FontCard}>
       <div className={classes.Header}>
-        <div className={classes.Title}>Font Name</div>
+        <div className={classes.Title}>{props.font}</div>
         <div> + </div>
       </div>
-      <p className={classes.Text}>This is where the test text goes.</p>
+      <p className={classes.Text}>{props.text}</p>
     </div>
   );
 }
