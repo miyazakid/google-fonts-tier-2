@@ -2,6 +2,7 @@
   border-top: 1px solid #5f6368;
   margin: 15px 15px 40px 15px;
   padding: 5px;
+  min-width: 150px;
   box-sizing: border-box;
 }
 
@@ -9,6 +10,10 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+}
+
+.Text {
+  word-wrap: break-word;
 }
 
 @media screen and (min-width: 768px) {

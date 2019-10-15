@@ -7,6 +7,7 @@ import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
 
 class App extends Component {
+
   state = {
     text: "This is near, that's far away!",
     fonts: [
@@ -23,12 +24,18 @@ class App extends Component {
     ]
   }
 
+  textChangedHandler = (event) => {
+    this.setState( {
+      text: event.target.value
+    })
+  }
+
   render () {
 
     return (
       <Aux>
         <MinorNavbar />
-        <MajorNav />
+        <MajorNav changed={this.textChangedHandler}/>
         <FontCards
           text={this.state.text}
           fonts={this.state.fonts}/>
