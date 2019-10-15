@@ -14,7 +14,7 @@ class MajorNav extends PureComponent {
 
           <Input inputtype="text" placeholder="Search..." />
 
-          <Input inputtype="text" placeholder="Testing fonts here..." onChange={this.props.changed} maxlength="120"/>
+          <Input inputtype="text" placeholder="Testing fonts here..." onChange={this.props.changed} maxLength="120"/>
 
           <select>
            <option value="12px">12px</option>

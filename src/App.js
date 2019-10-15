@@ -24,10 +24,18 @@ class App extends Component {
     ]
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.text === "") {
+      this.setState( {
+        text: "This is near, that's far away!"
+      })
+    }
+  }
+
   textChangedHandler = (event) => {
-    this.setState( {
-      text: event.target.value
-    })
+      this.setState( {
+        text: event.target.value
+      })
   }
 
   render () {
