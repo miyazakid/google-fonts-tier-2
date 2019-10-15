@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 import classes from './MajorNav.module.css';
 import Input from '../../UI/Input/Input';
 import Aux from '../../../hoc/Aux/Aux';
-
+import Button from '../../UI/Button/Button';
 class MajorNav extends PureComponent {
 
   render () {
@@ -24,8 +24,8 @@ class MajorNav extends PureComponent {
           </select>
 
           <div className={classes.RadioGroup}>
-            <Input inputtype="radio" id="dark" label="" name="colormode" value="dark" />
-            <Input inputtype="radio" id="light" label="" name="colormode" value="light" />
+            <Button btnType="Danger">Hey</Button>
+            <Button />
           </div>
 
           <button>Grid/List mode</button>

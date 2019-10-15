@@ -20,5 +20,7 @@
 }
 
 .Radio {
+  display: inline-block;
   margin: 0px 3px;
+  padding: 3px 10px;
 }
