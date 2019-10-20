@@ -7,7 +7,7 @@ const input = (props) => {
 
   switch (props.inputtype) {
     case ('text'):
-      inputElement = <input type="text" className={[classes.InputElement, classes[props.borderType]].join(' ')} {...props} />;
+      inputElement = <input type="text" className={[classes.InputElement, classes[props.bordertype]].join(' ')} {...props} />;
       break;
     case ('radio'):
       inputElement = (
@@ -18,7 +18,7 @@ const input = (props) => {
       );
       break;
     default:
-      inputElement = <input type="text" className={[classes.InputElement, classes[props.borderType]].join(' ')} {...props} />;
+      inputElement = <input type="text" className={[classes.InputElement, classes[props.bordertype]].join(' ')} {...props} />;
   }
 
   return (

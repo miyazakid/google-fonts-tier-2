@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './App.css';
 import Aux from './hoc/Aux/Aux';
@@ -6,9 +7,9 @@ import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle)
 
@@ -29,6 +30,15 @@ class App extends Component {
       {family: "Montserrat", id: '9'},
       {family: "Roboto Condensed", id: '10'}
     ]
+  }
+
+  componentDidMount() {
+    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
+      .then(res => {
+        console.log(res);
+      }).catch(function (error) {
+        console.log(error);
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {

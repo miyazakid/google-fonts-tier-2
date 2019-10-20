@@ -1,8 +1,9 @@
 .FontCard {
+  flex: 1;
   border-top: 1px solid #5f6368;
   margin: 15px 15px 40px 15px;
   padding: 5px;
-  min-width: 150px;
+  min-width: 200px;
   box-sizing: border-box;
 }
 
@@ -20,7 +21,8 @@
   .FontCard {
     display: flex;
     flex-direction: column;
+    flex-basis: auto;
     flex-grow: 1;
-    max-width: 25vw;
+    max-width: 23vw;
   }
 }

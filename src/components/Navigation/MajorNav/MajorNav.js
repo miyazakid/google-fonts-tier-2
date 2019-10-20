@@ -13,9 +13,9 @@ class MajorNav extends PureComponent {
       <Aux>
         <div className={classes.MajorNav}>
 
-          <Input inputtype="text" placeholder="Search..." borderType="NoBorder" />
+          <Input inputtype="text" placeholder="Search..." bordertype="NoBorder" />
 
-          <Input inputtype="text" placeholder="Testing fonts here..." borderType="RightBorder" onChange={this.props.changed} maxLength="120"/>
+          <Input inputtype="text" placeholder="Testing fonts here..." bordertype="RightBorder" onChange={this.props.changed} maxLength="120"/>
 
           <div className={classes.SelectStyle}>
             <select>
