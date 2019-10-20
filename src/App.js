@@ -6,6 +6,13 @@ import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle)
+
+
 class App extends Component {
 
   state = {

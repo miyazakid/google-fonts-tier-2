@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './MajorNav.module.css';
 import Input from '../../UI/Input/Input';
 import Aux from '../../../hoc/Aux/Aux';
@@ -12,32 +13,34 @@ class MajorNav extends PureComponent {
       <Aux>
         <div className={classes.MajorNav}>
 
-          <Input inputtype="text" placeholder="Search..." />
+          <Input inputtype="text" placeholder="Search..." borderType="NoBorder" />
 
-          <Input inputtype="text" placeholder="Testing fonts here..." onChange={this.props.changed} maxLength="120"/>
+          <Input inputtype="text" placeholder="Testing fonts here..." borderType="RightBorder" onChange={this.props.changed} maxLength="120"/>
 
-          <select>
-           <option value="12px">12px</option>
-           <option value="18px">18px</option>
-           <option value="24px">24px</option>
-           <option value="32px">32px</option>
-          </select>
-
-          <div className={classes.RadioGroup}>
-            <Button btnType="Danger">Hey</Button>
-            <Button />
+          <div className={classes.SelectStyle}>
+            <select>
+             <option value="12px">12px</option>
+             <option value="18px">18px</option>
+             <option value="24px">24px</option>
+             <option value="32px">32px</option>
+            </select>
           </div>
 
-          <button>Grid/List mode</button>
+          <div className={classes.ButtonGroup}>
+            <Button btnType="Dark"/>
+            <Button btnType="Light"/>
+          </div>
 
-          <button>Reset</button>
+          <Button><FontAwesomeIcon icon="list-ul" size="lg"/></Button>
+
+          <Button><FontAwesomeIcon icon="redo-alt" size="lg"/></Button>
         </div>
 
         <div className={classes.MajorNavSmall}>
 
           <Input inputtype="text" placeholder="Search..."  />
 
-          <button>Reset</button>
+          <Button><FontAwesomeIcon icon="redo-alt" size="lg"/></Button>
         </div>
       </Aux>
     );
