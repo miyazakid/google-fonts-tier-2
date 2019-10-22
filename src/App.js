@@ -6,6 +6,7 @@ import Aux from './hoc/Aux/Aux';
 import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
+import InfiniteScroll from './components/InfiniteScroll/InfiniteScroll';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,28 +19,52 @@ class App extends Component {
 
   state = {
     text: "This is near, that's far away!",
-    fonts: []
+    fonts: [],
+    loadIndex: 0
   }
 
   componentDidMount() {
-    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
-      .then(res => {
-        console.log(res);
-        let data = res.data.items;
-        const fetchedFonts = [];
-        data.map((f, index) => fetchedFonts.push({family: f.family, id: index}) );
-        console.log(fetchedFonts);
-        this.setState({fonts: fetchedFonts});
-      }).catch(function (error) {
-        console.log(error);
-      });
+    this.loadFonts();
+
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.text === "") {
       this.setState( {
         text: "This is near, that's far away!"
-      })
+      });
+    }
+    this.scrollListener = window.addEventListener("scroll", e => {
+      this.scrollHandler(e);
+    });
+  }
+
+  loadFonts = () => {
+    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
+      .then(res => {
+        let data = res.data.items;
+        let num = this.state.loadIndex + 25;
+        const fetchedFonts = [...this.state.fonts];
+        for (let i = this.state.loadIndex; i < num; i++) {
+          fetchedFonts.push({family: data[i].family, id: i})
+        }
+        this.setState({fonts: fetchedFonts, loadIndex: fetchedFonts.length});
+      }).catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  loadMoreFonts = () => {
+    this.loadFonts();
+  }
+
+  scrollHandler = () => {
+    let lastElement = document.querySelector("div.FontCard_FontCard__2H941:last-child");
+    let lastElementOffset = lastElement.offsetTop + lastElement.clientHeight;
+    let pageOffset = window.pageYOffset + window.innerHeight;
+
+    if (pageOffset > lastElementOffset) {
+      this.loadMoreFonts();
     }
   }
 
@@ -58,6 +83,10 @@ class App extends Component {
         <FontCards
           text={this.state.text}
           fonts={this.state.fonts}/>
+          <button onClick={e => {
+            this.loadMoreFonts();
+          }}>Load More</button>
+        <InfiniteScroll />
       </Aux>
     );
   }
