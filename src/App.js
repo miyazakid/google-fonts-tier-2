@@ -6,7 +6,6 @@ import Aux from './hoc/Aux/Aux';
 import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
-import InfiniteScroll from './components/InfiniteScroll/InfiniteScroll';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,9 +33,9 @@ class App extends Component {
         text: "This is near, that's far away!"
       });
     }
-    this.scrollListener = window.addEventListener("scroll", e => {
+    this.scrollListener = window.addEventListener("scroll", _.debounce(e => {
       this.scrollHandler(e);
-    });
+    }, 100));
   }
 
   loadFonts = () => {
@@ -48,7 +47,7 @@ class App extends Component {
         for (let i = this.state.loadIndex; i < num; i++) {
           fetchedFonts.push({family: data[i].family, id: i})
         }
-        this.setState({fonts: fetchedFonts, loadIndex: fetchedFonts.length});
+        this.setState({fonts: fetchedFonts, loadIndex: this.state.loadIndex + 25});
       }).catch(function (error) {
         console.log(error);
       });
@@ -83,10 +82,6 @@ class App extends Component {
         <FontCards
           text={this.state.text}
           fonts={this.state.fonts}/>
-          <button onClick={e => {
-            this.loadMoreFonts();
-          }}>Load More</button>
-        <InfiniteScroll />
       </Aux>
     );
   }
