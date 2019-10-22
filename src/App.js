@@ -18,24 +18,18 @@ class App extends Component {
 
   state = {
     text: "This is near, that's far away!",
-    fonts: [
-      {family: "Roboto", id: '1'},
-      {family: "Lato", id: '2'},
-      {family: "Open Sans", id: '3'},
-      {family: "Montserrat", id: '4'},
-      {family: "Roboto Condensed", id: '5'},
-      {family: "Roboto", id: '6'},
-      {family: "Lato", id: '7'},
-      {family: "Open Sans", id: '8'},
-      {family: "Montserrat", id: '9'},
-      {family: "Roboto Condensed", id: '10'}
-    ]
+    fonts: []
   }
 
   componentDidMount() {
-    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
+    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
       .then(res => {
         console.log(res);
+        let data = res.data.items;
+        const fetchedFonts = [];
+        data.map((f, index) => fetchedFonts.push({family: f.family, id: index}) );
+        console.log(fetchedFonts);
+        this.setState({fonts: fetchedFonts});
       }).catch(function (error) {
         console.log(error);
       });
