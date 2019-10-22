@@ -17,7 +17,7 @@ library.add(faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle)
 class App extends Component {
 
   state = {
-    text: "This is near, that's far away!",
+    text: "This is small, they're far away!",
     fonts: [],
     loadIndex: 0
   }
@@ -30,24 +30,24 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.text === "") {
       this.setState( {
-        text: "This is near, that's far away!"
+        text: "This is small, they're far away!"
       });
     }
-    this.scrollListener = window.addEventListener("scroll", _.debounce(e => {
+    this.scrollListener = window.addEventListener("scroll", e => {
       this.scrollHandler(e);
-    }, 100));
+    });
   }
 
   loadFonts = () => {
     axios.get('https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
       .then(res => {
         let data = res.data.items;
-        let num = this.state.loadIndex + 25;
+        let num = this.state.loadIndex + 36;
         const fetchedFonts = [...this.state.fonts];
         for (let i = this.state.loadIndex; i < num; i++) {
           fetchedFonts.push({family: data[i].family, id: i})
         }
-        this.setState({fonts: fetchedFonts, loadIndex: this.state.loadIndex + 25});
+        this.setState({fonts: fetchedFonts, loadIndex: this.state.loadIndex + 36});
       }).catch(function (error) {
         console.log(error);
       });
