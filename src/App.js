@@ -6,6 +6,7 @@ import Aux from './hoc/Aux/Aux';
 import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
+import debounce from 'lodash.debounce';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +14,7 @@ import { faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle } from '@fort
 
 library.add(faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle)
 
+const waitTime = 100;
 
 class App extends Component {
 
@@ -24,7 +26,6 @@ class App extends Component {
 
   componentDidMount() {
     this.loadFonts();
-
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -57,7 +58,7 @@ class App extends Component {
     this.loadFonts();
   }
 
-  scrollHandler = () => {
+  scrollHandler = debounce(() => {
     let lastElement = document.querySelector("div.FontCard_FontCard__2H941:last-child");
     let lastElementOffset = lastElement.offsetTop + lastElement.clientHeight;
     let pageOffset = window.pageYOffset + window.innerHeight;
@@ -65,7 +66,7 @@ class App extends Component {
     if (pageOffset > lastElementOffset) {
       this.loadMoreFonts();
     }
-  }
+  }, waitTime);
 
   textChangedHandler = (event) => {
       this.setState( {
