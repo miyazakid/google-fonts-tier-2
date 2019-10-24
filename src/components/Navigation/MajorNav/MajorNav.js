@@ -38,7 +38,7 @@ class MajorNav extends PureComponent {
 
         <div className={classes.MajorNavSmall}>
 
-          <Input inputtype="text" placeholder="Search..."  />
+          <Input inputtype="text" placeholder="Search..." bordertype="NoBorder" />
 
           <Button><FontAwesomeIcon icon="redo-alt" size="lg"/></Button>
         </div>

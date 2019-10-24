@@ -46,7 +46,7 @@ class App extends Component {
         let num = this.state.loadIndex + 36;
         const fetchedFonts = [...this.state.fonts];
         for (let i = this.state.loadIndex; i < num; i++) {
-          fetchedFonts.push({family: data[i].family, id: i})
+          fetchedFonts.push({family: data[i].family, id: i, apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')})
         }
         this.setState({fonts: fetchedFonts, loadIndex: this.state.loadIndex + 36});
       }).catch(function (error) {
