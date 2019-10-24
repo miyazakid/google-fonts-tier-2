@@ -23,6 +23,6 @@
     flex-direction: column;
     flex-basis: auto;
     flex-grow: 1;
-    max-width: 23vw;
+    width: 250px;
   }
 }

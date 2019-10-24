@@ -6,6 +6,7 @@ import Aux from './hoc/Aux/Aux';
 import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
+import FontURLs from './components/FontURLs/FontURLs';
 import debounce from 'lodash.debounce';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -78,6 +79,7 @@ class App extends Component {
 
     return (
       <Aux>
+      <FontURLs apiURL={this.state.fonts.apiURL}/>
         <MinorNavbar />
         <MajorNav changed={this.textChangedHandler}/>
         <FontCards
