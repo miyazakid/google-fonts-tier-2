@@ -79,7 +79,7 @@ class App extends Component {
 
     return (
       <Aux>
-      <FontURLs apiURL={this.state.fonts.apiURL}/>
+      <FontURLs apiURL={this.state.fonts}/>
         <MinorNavbar />
         <MajorNav changed={this.textChangedHandler}/>
         <FontCards
