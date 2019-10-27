@@ -27,8 +27,7 @@ class MajorNav extends PureComponent {
           </div>
 
           <div className={classes.ButtonGroup}>
-            <Button btnType="Dark"/>
-            <Button btnType="Light"/>
+            <Button btnType={this.props.activeColor} clicked={this.props.colorMode} />
           </div>
 
           <Button><FontAwesomeIcon icon="list-ul" size="lg"/></Button>

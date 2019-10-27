@@ -22,7 +22,8 @@ class App extends Component {
   state = {
     text: "This is small, they're far away!",
     fonts: [],
-    loadIndex: 0
+    loadIndex: 0,
+    colorMode: "Light"
   }
 
   componentDidMount() {
@@ -75,17 +76,25 @@ class App extends Component {
       })
   }
 
+  colorModeHandler = () => {
+    if (this.state.colorMode != "Dark") {
+      this.setState({ colorMode: "Dark" });
+    } else {
+      this.setState({ colorMode: "Light" });
+    }
+  }
+
   render () {
 
     return (
-      <Aux>
+      <div className={this.state.colorMode === "Dark" ? "Darkness" : "Lightness"}>
       <FontURLs apiURL={this.state.fonts}/>
         <MinorNavbar />
-        <MajorNav changed={this.textChangedHandler}/>
+        <MajorNav changed={this.textChangedHandler} colorMode={this.colorModeHandler} activeColor={this.state.colorMode}/>
         <FontCards
           text={this.state.text}
           fonts={this.state.fonts}/>
-      </Aux>
+      </div>
     );
   }
 }

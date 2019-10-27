@@ -20,16 +20,19 @@
     color: #944317;
 }
 
-.Dark {
-  width: 100%;
+.Light {
+  width: 20px;
+  height: 20px;
   padding: 6px;
   background-color: black;
   border: 1px solid #5f6368;
   border-radius: 50%;
 }
 
-.Light {
-  width: 100%;
+.Dark {
+
+  width: 20px;
+  height: 20px;
   padding: 6px;
   background-color: white;
   border: 1px solid #5f6368;
