@@ -2,12 +2,12 @@
   text-align: center;
 }
 
-.Darkness {
+.black {
   background-color: black;
   color: white;
 }
 
-.Lightness {
+.white {
   background-color: white;
   color: black;
 }
