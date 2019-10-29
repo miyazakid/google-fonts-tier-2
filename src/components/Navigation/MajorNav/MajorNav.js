@@ -30,9 +30,9 @@ class MajorNav extends PureComponent {
             <Button btnType={this.props.activeColor} clicked={this.props.colorMode} />
           </div>
 
-          <Button><FontAwesomeIcon icon="list-ul" size="lg"/></Button>
+          <Button><FontAwesomeIcon icon="list-ul" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
 
-          <Button><FontAwesomeIcon icon="redo-alt" size="lg"/></Button>
+          <Button><FontAwesomeIcon icon="redo-alt" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
         </div>
 
         <div className={classes.MajorNavSmall}>
