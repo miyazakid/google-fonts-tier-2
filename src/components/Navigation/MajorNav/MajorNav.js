@@ -19,7 +19,7 @@ class MajorNav extends PureComponent {
           <Input inputtype="text" placeholder="Testing fonts here..." bordertype="RightBorder" onChange={this.props.changed} maxLength="120"/>
 
           <div className={classes.SelectStyle}>
-            <select>
+            <select value={this.props.fontSize} onChange={this.props.changeFontSize}>
              <option value="12px">12px</option>
              <option value="18px">18px</option>
              <option value="24px">24px</option>

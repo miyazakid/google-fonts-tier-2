@@ -8,13 +8,13 @@ class FontURLs extends PureComponent {
       let fontCollection = [];
       this.props.apiURL.map(link => {
         return fontCollection.push(
-            <FontURL url={link.apiURL}/>)
+            <FontURL url={link.apiURL} key={link.id}/>)
       });
 
       return (
-          <head>
+          <div>
           {fontCollection}
-          </head>
+          </div>
       );
   }
 }

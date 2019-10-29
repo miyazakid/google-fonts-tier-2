@@ -25,7 +25,8 @@ class App extends Component {
     fonts: [],
     loadIndex: 0,
     colorMode: "white",
-    listMode: "FontCardFlex"
+    listMode: "FontCardFlex",
+    fontSize: "24px"
   }
 
   componentDidMount() {
@@ -94,20 +95,29 @@ class App extends Component {
     }
   }
 
+  fontSizeHandler = (event) => {
+    this.setState({fontSize: event.target.value})
+  }
+
   render () {
 
     return (
       <div className={this.state.colorMode === "black" ? "black" : "white"}>
-      <FontURLs apiURL={this.state.fonts}/>
+
+        <FontURLs apiURL={this.state.fonts}/>
+
         <MinorNavbar />
         <MajorNav
             changed={this.textChangedHandler}
             colorMode={this.colorModeHandler}
             activeColor={this.state.colorMode}
-            listMode={this.listModeHandler} />
+            listMode={this.listModeHandler}
+            changeFontSize={this.fontSizeHandler}
+            fontSize={this.state.fontSize} />
         <FontCards
           text={this.state.text}
           fonts={this.state.fonts}
+          fontSize={this.state.fontSize}
           displayState={this.state.listMode}/>
       </div>
     );

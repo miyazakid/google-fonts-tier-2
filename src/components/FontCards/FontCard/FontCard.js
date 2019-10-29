@@ -18,7 +18,7 @@ const fontcard = (props) => {
         <div className={classes.Title}>{props.font}</div>
         <div> + </div>
       </div>
-      <p className={classes.Text} style={{fontFamily: props.font}}>{props.text}</p>
+      <p className={classes.Text} style={{fontFamily: props.font, fontSize: props.fontSize}}>{props.text}</p>
     </div>
   );
 }
