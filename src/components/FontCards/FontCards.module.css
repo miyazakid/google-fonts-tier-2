@@ -5,15 +5,17 @@
 
 @media screen and (min-width: 768px) {
   .FontCards {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  .FontCardsList {
+  .FontCardFlex {
+    display: flex;
+  }
+
+  .FontCardBlock {
     display: block;
-    width: 90%;
-    margin: 0 auto;
+    margin-top: 30px;
   }
 }

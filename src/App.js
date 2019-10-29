@@ -17,13 +17,15 @@ library.add(faCaretUp, faCaretDown, faListUl, faRedoAlt, faPlusCircle)
 
 const waitTime = 100;
 
+
 class App extends Component {
 
   state = {
     text: "This is small, they're far away!",
     fonts: [],
     loadIndex: 0,
-    colorMode: "white"
+    colorMode: "white",
+    listMode: "FontCardFlex"
   }
 
   componentDidMount() {
@@ -77,10 +79,18 @@ class App extends Component {
   }
 
   colorModeHandler = () => {
-    if (this.state.colorMode != "black") {
+    if (this.state.colorMode !== "black") {
       this.setState({ colorMode: "black" });
     } else {
       this.setState({ colorMode: "white" });
+    }
+  }
+
+  listModeHandler = () => {
+    if (this.state.listMode !== "FontCardFlex") {
+      this.setState({ listMode: "FontCardFlex" });
+    } else {
+      this.setState({ listMode: "FontCardBlock" });
     }
   }
 
@@ -90,10 +100,15 @@ class App extends Component {
       <div className={this.state.colorMode === "black" ? "black" : "white"}>
       <FontURLs apiURL={this.state.fonts}/>
         <MinorNavbar />
-        <MajorNav changed={this.textChangedHandler} colorMode={this.colorModeHandler} activeColor={this.state.colorMode}/>
+        <MajorNav
+            changed={this.textChangedHandler}
+            colorMode={this.colorModeHandler}
+            activeColor={this.state.colorMode}
+            listMode={this.listModeHandler} />
         <FontCards
           text={this.state.text}
-          fonts={this.state.fonts}/>
+          fonts={this.state.fonts}
+          displayState={this.state.listMode}/>
       </div>
     );
   }

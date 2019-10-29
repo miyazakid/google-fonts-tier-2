@@ -9,11 +9,15 @@ class FontCards extends PureComponent {
       let cardCollection = [];
       this.props.fonts.map((font, index) => {
         return cardCollection.push(
-            <FontCard key={font.id} font={font.family} text={this.props.text}/>)
+            <FontCard
+                key={font.id}
+                font={font.family}
+                text={this.props.text}
+                listCard={this.props.displayState}/>)
       });
 
       return (
-          <div className={classes.FontCards}>
+          <div className={[classes.FontCards, classes[this.props.displayState]].join(' ')}>
           {cardCollection}
           </div>
       );

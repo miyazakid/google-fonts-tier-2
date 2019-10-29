@@ -5,6 +5,7 @@ import classes from './MajorNav.module.css';
 import Input from '../../UI/Input/Input';
 import Aux from '../../../hoc/Aux/Aux';
 import Button from '../../UI/Button/Button';
+
 class MajorNav extends PureComponent {
 
   render () {
@@ -30,7 +31,7 @@ class MajorNav extends PureComponent {
             <Button btnType={this.props.activeColor} clicked={this.props.colorMode} />
           </div>
 
-          <Button><FontAwesomeIcon icon="list-ul" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
+          <Button clicked={this.props.listMode} ><FontAwesomeIcon icon="list-ul" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
 
           <Button><FontAwesomeIcon icon="redo-alt" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
         </div>
