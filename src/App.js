@@ -23,6 +23,7 @@ class App extends Component {
   state = {
     text: "This is small, they're far away!",
     fonts: [],
+    loadedFonts: [],
     loadIndex: 0,
     colorMode: "white",
     listMode: "FontCardFlex",
@@ -30,7 +31,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.loadFonts();
+    this.downloadFonts();
+    
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -44,23 +46,35 @@ class App extends Component {
     });
   }
 
-  loadFonts = () => {
+  downloadFonts = () => {
     axios.get('https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
       .then(res => {
         let data = res.data.items;
-        let num = this.state.loadIndex + 36;
+
         const fetchedFonts = [...this.state.fonts];
-        for (let i = this.state.loadIndex; i < num; i++) {
+        for (let i = 0; i < data.length; i++) {
           fetchedFonts.push({family: data[i].family, id: i, apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')})
         }
-        this.setState({fonts: fetchedFonts, loadIndex: this.state.loadIndex + 36});
+
+        let loadedFonts = [...this.state.loadedFonts];
+        let num = this.state.loadIndex + 36;
+        for (let i = this.state.loadIndex; i < num; i++) {
+          loadedFonts.push({family: data[i].family, id: i, apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')})
+        }
+        this.setState({fonts: fetchedFonts, loadedFonts: loadedFonts});
       }).catch(function (error) {
         console.log(error);
       });
   }
 
-  loadMoreFonts = () => {
-    this.loadFonts();
+  loadFontsToDOM = () => {
+
+
+
+  }
+
+  loadMoreFontsToDOM = () => {
+    this.loadFontsToDOM();
   }
 
   scrollHandler = debounce(() => {
@@ -69,7 +83,7 @@ class App extends Component {
     let pageOffset = window.pageYOffset + window.innerHeight;
 
     if (pageOffset > lastElementOffset) {
-      this.loadMoreFonts();
+      this.loadMoreFontsToDOM();
     }
   }, waitTime);
 
