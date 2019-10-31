@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import axios from 'axios';
 
 import './App.css';
 // import Aux from './hoc/Aux/Aux';
+import Spinner from './components/UI/Spinner/Spinner';
 import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
@@ -27,12 +29,13 @@ class App extends Component {
     loadIndex: 0,
     colorMode: "white",
     listMode: "FontCardFlex",
-    fontSize: "24px"
+    fontSize: "24px",
+    links: [],
+    loading: true
   }
 
   componentDidMount() {
     this.downloadFonts();
-    
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -50,31 +53,56 @@ class App extends Component {
     axios.get('https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBG-FePB1VPnmYo3LzVMx-k7Ap0UkzTLJs')
       .then(res => {
         let data = res.data.items;
-
         const fetchedFonts = [...this.state.fonts];
         for (let i = 0; i < data.length; i++) {
-          fetchedFonts.push({family: data[i].family, id: i, apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')})
+          fetchedFonts.push({
+            family: data[i].family,
+            id: i,
+            apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')
+          });
         }
 
-        let loadedFonts = [...this.state.loadedFonts];
-        let num = this.state.loadIndex + 36;
-        for (let i = this.state.loadIndex; i < num; i++) {
-          loadedFonts.push({family: data[i].family, id: i, apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')})
+        let loadedFonts = [];
+        let num = 36;
+        for (let i = 0; i < num; i++) {
+          loadedFonts.push({
+            family: data[i].family,
+            id: i,
+            apiURL: 'https://fonts.googleapis.com/css?family=' + data[i].family.replace(/ /g, '+')
+          });
         }
-        this.setState({fonts: fetchedFonts, loadedFonts: loadedFonts});
+
+        const fontURLs = [];
+        const fontLinks = [];
+        for (let i = 0; i < fetchedFonts.length; i++) {
+          fontURLs.push(fetchedFonts[i].apiURL);
+        }
+        fontURLs.map((url, i) => {
+          fontLinks.push(
+            <link rel="stylesheet" href={url} key={i} />
+          )
+        })
+
+        this.setState({
+          fonts: fetchedFonts,
+          loadedFonts: loadedFonts,
+          loadIndex: num,
+          links: fontLinks,
+          loading: false});
       }).catch(function (error) {
         console.log(error);
       });
   }
 
-  loadFontsToDOM = () => {
-
-
-
-  }
 
   loadMoreFontsToDOM = () => {
-    this.loadFontsToDOM();
+    let fonts = [...this.state.fonts];
+    let loadedFonts = [...this.state.loadedFonts];
+    let num = this.state.loadIndex + 36;
+    for (let i = this.state.loadIndex; i < num; i++) {
+      loadedFonts.push(fonts[i]);
+    }
+    this.setState({loadedFonts: loadedFonts, loadIndex: num});
   }
 
   scrollHandler = debounce(() => {
@@ -114,12 +142,21 @@ class App extends Component {
   }
 
   render () {
+    let fontCards = <FontCards
+        text={this.state.text}
+        fonts={this.state.loadedFonts}
+        fontSize={this.state.fontSize}
+        displayState={this.state.listMode}/>;
+
+    if (this.state.loading) {
+      fontCards = <Spinner />;
+    }
 
     return (
       <div className={this.state.colorMode === "black" ? "black" : "white"}>
-
-        <FontURLs apiURL={this.state.fonts}/>
-
+        <Helmet>
+          {this.state.links}
+        </Helmet>
         <MinorNavbar />
         <MajorNav
             changed={this.textChangedHandler}
@@ -128,11 +165,7 @@ class App extends Component {
             listMode={this.listModeHandler}
             changeFontSize={this.fontSizeHandler}
             fontSize={this.state.fontSize} />
-        <FontCards
-          text={this.state.text}
-          fonts={this.state.fonts}
-          fontSize={this.state.fontSize}
-          displayState={this.state.listMode}/>
+        {fontCards}
       </div>
     );
   }
