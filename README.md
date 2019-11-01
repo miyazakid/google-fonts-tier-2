@@ -1,4 +1,4 @@
-### Chingu Voyage 13 Pre-Work Solo Project (Tier 2): Favorite Fonts
+# Chingu Voyage 13 Pre-Work Solo Project (Tier 2): Favorite Fonts
 
 ![App Screenshot](/src/assets/Screenshot2019-11-01.png)
 
