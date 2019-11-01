@@ -14,16 +14,16 @@ class MajorNav extends PureComponent {
       <Aux>
         <div className={classes.MajorNav}>
 
-          <Input inputtype="text" placeholder="Search..." bordertype="NoBorder" />
+          <Input inputtype="text" placeholder="Search..." onChange={this.props.search} bordertype="NoBorder" maxLength="50" />
 
-          <Input inputtype="text" placeholder="Testing fonts here..." bordertype="RightBorder" onChange={this.props.changed} maxLength="120"/>
+          <Input inputtype="text" placeholder="Testing fonts here..." onChange={this.props.changed} value={this.props.text} bordertype="RightBorder" maxLength="120"/>
 
           <div className={classes.SelectStyle}>
-            <select value={this.props.fontSize} onChange={this.props.changeFontSize}>
-             <option value="12px">12px</option>
-             <option value="18px">18px</option>
-             <option value="24px">24px</option>
-             <option value="32px">32px</option>
+            <select value={this.props.fontSize} className={this.props.activeColor} onChange={this.props.changeFontSize}>
+             <option className={this.props.activeColor} value="12px">12px</option>
+             <option className={this.props.activeColor} value="18px">18px</option>
+             <option className={this.props.activeColor} value="24px">24px</option>
+             <option className={this.props.activeColor} value="32px">32px</option>
             </select>
           </div>
 
@@ -31,16 +31,16 @@ class MajorNav extends PureComponent {
             <Button btnType={this.props.activeColor} clicked={this.props.colorMode} />
           </div>
 
-          <Button clicked={this.props.listMode} ><FontAwesomeIcon icon="list-ul" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
+          <Button clicked={this.props.listMode}><FontAwesomeIcon icon="list-ul" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
 
-          <Button><FontAwesomeIcon icon="redo-alt" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
+          <Button clicked={this.props.reset}><FontAwesomeIcon icon="redo-alt" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
         </div>
 
         <div className={classes.MajorNavSmall}>
 
-          <Input inputtype="text" placeholder="Search..." bordertype="NoBorder" />
+          <Input inputtype="text" placeholder="Search..." onChange={this.props.search} bordertype="NoBorder" maxLength="50" />
 
-          <Button><FontAwesomeIcon icon="redo-alt" size="lg"/></Button>
+          <Button clicked={this.props.reset}><FontAwesomeIcon icon="redo-alt" size="lg" color={this.props.activeColor === "white" ? "black" : "white"}/></Button>
         </div>
       </Aux>
     );

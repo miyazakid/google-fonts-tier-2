@@ -12,6 +12,7 @@ class FontCards extends PureComponent {
             <FontCard
                 key={font.id}
                 font={font.family}
+                link={font.link}
                 fontSize={this.props.fontSize}
                 text={this.props.text}
                 listCard={this.props.displayState}/>)
