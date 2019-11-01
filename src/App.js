@@ -7,6 +7,7 @@ import MinorNavbar from './components/Navigation/MinorNav/MinorNav';
 import MajorNav from './components/Navigation/MajorNav/MajorNav';
 import FontCards from './components/FontCards/FontCards';
 import debounce from 'lodash.debounce';
+import Button from './components/UI/Button/Button';
 
 // Importing Font Awesome and creating a library of icons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -186,6 +187,10 @@ class App extends Component {
     });
   }
 
+  scrollToTop = () => {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     let fontCards = <FontCards
         text={this.state.text}
@@ -211,6 +216,8 @@ class App extends Component {
             fontSize={this.state.fontSize}
             reset={this.resetHandler}/>
         {fontCards}
+        <Button clicked={this.scrollToTop} btnType="toTop">Top</Button>
+        <footer className="footer"><p>coded by Fintan Maher - chingu pre-work project 2019 </p></footer>
       </div>
     );
   }
